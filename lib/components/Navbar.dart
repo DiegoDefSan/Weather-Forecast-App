@@ -16,16 +16,33 @@ class Navbar extends StatelessWidget implements PreferredSizeWidget {
         height: preferredSize.height,
         color: colors["pink-navbar"],
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
+          mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
+            if (ModalRoute.of(context)!.hasActiveRouteBelow)
+              GestureDetector(
+                onTap: () {
+                  Navigator.of(context).pop();
+                },
+                child: const Icon(
+                  Icons.arrow_back,
+                  color: Colors.white,
+                ),
+              ),
             Text(
               title,
+              textAlign: TextAlign.center,
               style: TextStyle(
                 color: colors["white"],
                 fontSize: 28,
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w700,
               ),
             ),
+            if (ModalRoute.of(context)!.hasActiveRouteBelow)
+              Container(
+                width: 24,
+                height: 24,
+                color: colors["pink-navbar"],
+              )
           ],
         ),
       ),
