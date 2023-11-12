@@ -10,8 +10,8 @@ class TodayWeather extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 24),
-      height: 290,
+      padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
+      height: 300,
       decoration: BoxDecoration(
         color: colors["pink-container"],
         borderRadius: BorderRadius.circular(24),
@@ -24,7 +24,9 @@ class TodayWeather extends StatelessWidget {
           SizedBox(
             height: 50,
             child: ElevatedButton(
-              onPressed: () {},
+              onPressed: () {
+                Navigator.of(context).pushNamed("/air-quality");
+              },
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors["purple-button"],
                 shape: RoundedRectangleBorder(
