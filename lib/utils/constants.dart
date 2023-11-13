@@ -15,3 +15,5 @@ const Map<String, Color> colors = {
   "fair-quality": Color(0xFFBADE50),
   "good-quality": Color(0xFF87A44A),
 };
+
+const String apiKey = "82a3f40e61371dd8d3e380326a7ccf60";
