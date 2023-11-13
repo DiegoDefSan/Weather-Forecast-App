@@ -11,14 +11,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  TextEditingController cityController = TextEditingController();
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       resizeToAvoidBottomInset: false,
-      appBar: const Navbar(title: "Weather app"),
-      body: Home(cityController: cityController),
+      appBar: Navbar(title: "Weather app"),
+      body: Home(),
     );
   }
 }
