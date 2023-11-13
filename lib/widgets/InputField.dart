@@ -3,12 +3,12 @@ import 'package:previsao_do_tempo/utils/constants.dart';
 
 class InputField extends StatefulWidget {
   final String hintText;
-  final TextEditingController textController;
+  final Function(String) onTextChanged;
 
   const InputField({
     Key? key,
     required this.hintText,
-    required this.textController,
+    required this.onTextChanged,
   }) : super(key: key);
 
   @override
@@ -16,6 +16,8 @@ class InputField extends StatefulWidget {
 }
 
 class _InputFieldState extends State<InputField> {
+  TextEditingController textController = TextEditingController();
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -28,7 +30,7 @@ class _InputFieldState extends State<InputField> {
           children: [
             Expanded(
               child: TextField(
-                controller: widget.textController,
+                controller: textController,
                 textCapitalization: TextCapitalization.words,
                 style: TextStyle(
                   color: colors["purple-text"],
@@ -40,7 +42,9 @@ class _InputFieldState extends State<InputField> {
               ),
             ),
             IconButton(
-              onPressed: () {},
+              onPressed: () {
+                widget.onTextChanged(textController.text);
+              },
               icon: const Icon(Icons.search),
             ),
           ],
