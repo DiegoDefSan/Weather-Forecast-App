@@ -1,11 +1,24 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/city.dart';
+import 'package:previsao_do_tempo/models/weather.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
-class TodayWeatherDescription extends StatelessWidget {
-  const TodayWeatherDescription({
-    super.key,
-  });
+class TodayWeatherDescription extends StatefulWidget {
+  City city;
+  Weather currentWeather;
 
+  TodayWeatherDescription({
+    Key? key,
+    required this.city,
+    required this.currentWeather,
+  }) : super(key: key);
+
+  @override
+  State<TodayWeatherDescription> createState() =>
+      _TodayWeatherDescriptionState();
+}
+
+class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -24,7 +37,7 @@ class TodayWeatherDescription extends StatelessWidget {
                 ),
               ),
               Text(
-                "Sunny",
+                widget.city.currentWeather!.description,
                 style: TextStyle(
                   color: colors["pink-letter"],
                   fontSize: 24,
@@ -37,13 +50,14 @@ class TodayWeatherDescription extends StatelessWidget {
             width: 160,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.end,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
                 Column(
                   crossAxisAlignment: CrossAxisAlignment.end,
                   children: [
                     Text(
-                      "Río de Janeiro, BR",
+                      //"Rio de Janeiro, BR",
+                      "${widget.city.name}, ${widget.city.countryCode}",
                       textAlign: TextAlign.right,
                       style: TextStyle(
                         color: colors["pink-letter"],
@@ -52,7 +66,8 @@ class TodayWeatherDescription extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      "Saturday, 11 Nov",
+                      //"Today, 12/07/2021",
+                      "Today, ${widget.currentWeather.date.day}/${widget.currentWeather.date.month}/${widget.currentWeather.date.year}",
                       style: TextStyle(
                         color: colors["pink-letter"],
                         fontSize: 14,
@@ -62,7 +77,7 @@ class TodayWeatherDescription extends StatelessWidget {
                   ],
                 ),
                 Text(
-                  "30 °C",
+                  "${widget.currentWeather.currentTemp} °C",
                   style: TextStyle(
                     color: colors["pink-letter"],
                     fontSize: 40,
@@ -77,3 +92,29 @@ class TodayWeatherDescription extends StatelessWidget {
     );
   }
 }
+
+// FutureBuilder(
+//             future: CityApiService().getCity(widget.cityName),
+//             builder: (context, snapshot) {
+//               switch (snapshot.connectionState) {
+//                 case ConnectionState.none:
+//                   return const Text("None");
+//                 case ConnectionState.waiting:
+//                   return const Text("Waiting");
+//                 case ConnectionState.active:
+//                   return const Text("Active");
+//                 case ConnectionState.done:
+//                   if (snapshot.hasData) {
+//                     final City city = snapshot.data as City;
+//                     final Weather weather = city.currentWeather!;
+
+//                     return nose(
+//                       city: city,
+//                       weather: weather,
+//                     );
+//                   } else {
+//                     return const Text("Done");
+//                   }
+//               }
+//             },
+//           ),
