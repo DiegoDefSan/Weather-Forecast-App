@@ -1,26 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/weather.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
-class TodayWeatherDetails extends StatelessWidget {
+class TodayWeatherDetails extends StatefulWidget {
+  final Weather currentWeather;
+
   const TodayWeatherDetails({
-    super.key,
-  });
+    Key? key,
+    required this.currentWeather,
+  }) : super(key: key);
 
   @override
+  State<TodayWeatherDetails> createState() => _TodayWeatherDetailsState();
+}
+
+class _TodayWeatherDetailsState extends State<TodayWeatherDetails> {
+  @override
   Widget build(BuildContext context) {
-    return const SizedBox(
+    return SizedBox(
       height: 30,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           WeatherDetail(
-            value: "18° 30°",
+            value: "${widget.currentWeather.precipitationProbability}%",
           ),
           WeatherDetail(
-            value: "73%",
+            value: "${widget.currentWeather.humidity}%",
           ),
           WeatherDetail(
-            value: "1.23 km/h",
+            value: "${widget.currentWeather.windSpeed} km/h",
           ),
         ],
       ),
