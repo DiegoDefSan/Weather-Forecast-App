@@ -1,9 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:previsao_do_tempo/widgets/InputField.dart';
 import 'package:previsao_do_tempo/widgets/Navbar.dart';
-import 'package:previsao_do_tempo/widgets/weather/DaysWeather.dart';
-import 'package:previsao_do_tempo/widgets/weather/TodayWeather.dart';
-import 'package:previsao_do_tempo/utils/constants.dart';
 
 import '../components/Home.dart';
 
