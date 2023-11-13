@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:previsao_do_tempo/pages/AirQuality.dart';
-import 'package:previsao_do_tempo/pages/ErrorRoute.dart';
-import 'package:previsao_do_tempo/pages/Home.dart';
+import 'package:previsao_do_tempo/pages/AirQualityPage.dart';
+import 'package:previsao_do_tempo/pages/ErrorRoutePage.dart';
+import 'package:previsao_do_tempo/pages/HomePage.dart';
 
 class RouteGenerator {
   static Route<dynamic> generateRoute(RouteSettings settings) {
     switch (settings.name) {
       case "/":
-        return MaterialPageRoute(builder: (_) => const Home());
+        return MaterialPageRoute(builder: (_) => const HomePage());
       case "/air-quality":
-        return MaterialPageRoute(builder: (_) => const AirQuality());
+        return MaterialPageRoute(builder: (_) => const AirQualityPage());
       default:
-        return MaterialPageRoute(builder: (_) => const ErrorRoute());
+        return MaterialPageRoute(builder: (_) => const ErrorRoutePage());
     }
   }
 }
