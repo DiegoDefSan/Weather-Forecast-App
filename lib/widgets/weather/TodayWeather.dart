@@ -1,12 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/city.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
 import 'TodayWeatherDescription.dart';
 import 'TodayWeatherDetails.dart';
 
-class TodayWeather extends StatelessWidget {
-  const TodayWeather({super.key});
+class TodayWeather extends StatefulWidget {
+  String cityName;
+  final City city;
 
+  TodayWeather({
+    Key? key,
+    required this.cityName,
+    required this.city,
+  }) : super(key: key);
+
+  @override
+  State<TodayWeather> createState() => _TodayWeatherState();
+}
+
+class _TodayWeatherState extends State<TodayWeather> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -19,13 +32,19 @@ class TodayWeather extends StatelessWidget {
       child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          const TodayWeatherDescription(),
-          const TodayWeatherDetails(),
+          TodayWeatherDescription(
+            city: widget.city,
+            currentWeather: widget.city.currentWeather!,
+          ),
+          TodayWeatherDetails(
+            currentWeather: widget.city.currentWeather!,
+          ),
           SizedBox(
             height: 50,
             child: ElevatedButton(
               onPressed: () {
-                Navigator.of(context).pushNamed("/air-quality");
+                //Navigator.of(context).pushNamed("/air-quality");
+                print(widget.city.name);
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors["purple-button"],
