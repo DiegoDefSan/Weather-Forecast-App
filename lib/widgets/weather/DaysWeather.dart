@@ -1,8 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/weather_dto.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
+import 'package:previsao_do_tempo/utils/converse_tempeture.dart';
 
-class DaysWeather extends StatelessWidget {
-  const DaysWeather({super.key});
+class DaysWeather extends StatefulWidget {
+  final Map<String, WeatherDTO> weatherByDay;
+
+  const DaysWeather({
+    Key? key,
+    required this.weatherByDay,
+  }) : super(key: key);
+
+  @override
+  State<DaysWeather> createState() => _DaysWeatherState();
+}
+
+class _DaysWeatherState extends State<DaysWeather> {
+  List<RowWeather> getRows() {
+    List<RowWeather> rows = [];
+
+    widget.weatherByDay.forEach((key, value) {
+      rows.add(
+        RowWeather(
+          day: getWeekDay(value.date),
+          minTemperature: value.minTemperature,
+          maxTemperature: value.maxTemperature,
+        ),
+      );
+    });
+
+    return rows;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,35 +41,9 @@ class DaysWeather extends StatelessWidget {
       ),
       padding: const EdgeInsets.symmetric(horizontal: 28, vertical: 24),
       height: 300,
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          RowWeather(
-            day: "Monday",
-            minTemperature: 20,
-            maxTemperature: 30,
-          ),
-          RowWeather(
-            day: "Tuesday",
-            minTemperature: 20,
-            maxTemperature: 30,
-          ),
-          RowWeather(
-            day: "Wednesday",
-            minTemperature: 20,
-            maxTemperature: 30,
-          ),
-          RowWeather(
-            day: "Thursday",
-            minTemperature: 20,
-            maxTemperature: 30,
-          ),
-          RowWeather(
-            day: "Friday",
-            minTemperature: 20,
-            maxTemperature: 30,
-          ),
-        ],
+        children: getRows(),
       ),
     );
   }
