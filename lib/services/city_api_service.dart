@@ -3,6 +3,8 @@ import 'package:http/http.dart' as http;
 
 import 'package:previsao_do_tempo/models/city.dart';
 import 'package:previsao_do_tempo/models/weather.dart';
+import 'package:previsao_do_tempo/models/weather_dto.dart';
+import 'package:previsao_do_tempo/services/weatherDTO_api_service.dart';
 import 'package:previsao_do_tempo/services/weather_api_service.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
@@ -31,7 +33,14 @@ class CityApiService {
     Weather currentWeather =
         await WeatherApiService().getWeather(city.latitude, city.longitude);
 
+    Map<String, WeatherDTO> weatherByDay =
+        await WeatherDTOApiService().getWeatherList(
+      city.latitude,
+      city.longitude,
+    );
+
     city.currentWeather = currentWeather;
+    city.weatherByDay = weatherByDay;
 
     return city;
   }
