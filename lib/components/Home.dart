@@ -53,7 +53,9 @@ class _HomeState extends State<Home> {
                       city: snapshot.data as City,
                       cityName: cityName,
                     ),
-                    const DaysWeather(),
+                    DaysWeather(
+                      weatherByDay: snapshot.data!.weatherByDay!,
+                    ),
                   ],
                 ),
               );
