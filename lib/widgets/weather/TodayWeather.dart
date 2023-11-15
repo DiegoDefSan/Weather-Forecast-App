@@ -6,12 +6,10 @@ import 'TodayWeatherDescription.dart';
 import 'TodayWeatherDetails.dart';
 
 class TodayWeather extends StatefulWidget {
-  String cityName;
   final City city;
 
-  TodayWeather({
+  const TodayWeather({
     Key? key,
-    required this.cityName,
     required this.city,
   }) : super(key: key);
 

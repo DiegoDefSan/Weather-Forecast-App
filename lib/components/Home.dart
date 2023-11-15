@@ -51,7 +51,6 @@ class _HomeState extends State<Home> {
                     ),
                     TodayWeather(
                       city: snapshot.data as City,
-                      cityName: cityName,
                     ),
                     DaysWeather(
                       weatherByDay: snapshot.data!.weatherByDay!,
