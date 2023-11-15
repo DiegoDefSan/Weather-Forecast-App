@@ -21,7 +21,7 @@ class WeatherDTOApiService {
       for (var item in jsonResponse["list"]) {
         weatherList.add(WeatherDTO(
           date: convertDateTime(item["dt_txt"]),
-          description: item["weather"][0]["main"],
+          iconId: item["weather"][0]["icon"],
           minTemperature: kelvinToCelsius(item["main"]["temp_min"].toDouble()),
           maxTemperature: kelvinToCelsius(item["main"]["temp_max"].toDouble()),
         ));
@@ -47,7 +47,7 @@ class WeatherDTOApiService {
           }
 
           if (hours == 12) {
-            weatherMap[item.date]!.description = item.description;
+            weatherMap[item.date]!.iconId = item.iconId;
           }
         } else {
           if (item.date != formattedDate) {
