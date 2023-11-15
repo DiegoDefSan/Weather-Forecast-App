@@ -9,8 +9,8 @@ class AirPollutionApiService {
 
   Future<AirPollution> getAirPollution(
       double latitude, double longitude) async {
-    final response = await http.get(
-        Uri.parse("${baseUrl}?lat=$latitude&lon=$longitude&appid=$apiKey"));
+    final response = await http
+        .get(Uri.parse("$baseUrl?lat=$latitude&lon=$longitude&appid=$apiKey"));
 
     if (response.statusCode != 200) {
       throw Exception("Failed to load air quality");

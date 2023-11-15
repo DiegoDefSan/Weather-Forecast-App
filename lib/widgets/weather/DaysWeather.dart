@@ -78,7 +78,7 @@ class _RowWeatherState extends State<RowWeather> {
               Container(
                 width: 32,
                 height: 32,
-                margin: EdgeInsets.only(right: 8),
+                margin: const EdgeInsets.only(right: 8),
                 decoration: BoxDecoration(
                   color: colors["pink-letter"],
                 ),

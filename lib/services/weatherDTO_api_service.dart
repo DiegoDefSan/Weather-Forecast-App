@@ -10,8 +10,8 @@ class WeatherDTOApiService {
 
   Future<Map<String, WeatherDTO>> getWeatherList(
       double latitude, double longitude) async {
-    final response = await http.get(
-        Uri.parse("$baseUrl?lat=${latitude}&lon=${longitude}&appid=$apiKey"));
+    final response = await http
+        .get(Uri.parse("$baseUrl?lat=$latitude&lon=$longitude&appid=$apiKey"));
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);

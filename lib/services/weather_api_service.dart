@@ -9,8 +9,8 @@ class WeatherApiService {
   final String baseUrl = "http://api.openweathermap.org/data/2.5/forecast";
 
   Future<Weather> getWeather(double latitude, double longitude) async {
-    final response = await http.get(
-        Uri.parse("$baseUrl?lat=${latitude}&lon=${longitude}&appid=$apiKey"));
+    final response = await http
+        .get(Uri.parse("$baseUrl?lat=$latitude&lon=$longitude&appid=$apiKey"));
 
     if (response.statusCode == 200) {
       final jsonResponse = jsonDecode(response.body);
