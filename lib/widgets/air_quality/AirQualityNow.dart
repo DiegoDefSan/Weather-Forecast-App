@@ -21,6 +21,7 @@ class _AirQualityNowState extends State<AirQualityNow> {
   AirPollution? airPollution;
   Weather? currentWeather;
 
+  @override
   void initState() {
     super.initState();
     airPollution = widget.city.airPollution;
