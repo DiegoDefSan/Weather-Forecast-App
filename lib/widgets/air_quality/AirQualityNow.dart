@@ -1,10 +1,31 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/air_pollution.dart';
+import 'package:previsao_do_tempo/models/city.dart';
+import 'package:previsao_do_tempo/models/weather.dart';
+import 'package:previsao_do_tempo/utils/air_quality_dict.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
-class AirQualityNow extends StatelessWidget {
+class AirQualityNow extends StatefulWidget {
+  final City city;
+
   const AirQualityNow({
-    super.key,
-  });
+    Key? key,
+    required this.city,
+  }) : super(key: key);
+
+  @override
+  State<AirQualityNow> createState() => _AirQualityNowState();
+}
+
+class _AirQualityNowState extends State<AirQualityNow> {
+  AirPollution? airPollution;
+  Weather? currentWeather;
+
+  void initState() {
+    super.initState();
+    airPollution = widget.city.airPollution;
+    currentWeather = widget.city.currentWeather;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -25,14 +46,14 @@ class AirQualityNow extends StatelessWidget {
                 width: 64,
                 height: 64,
                 decoration: BoxDecoration(
-                  color: colors["poor-quality"],
+                  color: getColorAirQuality(airPollution!.qualityLevel),
                   borderRadius: BorderRadius.circular(50),
                 ),
               ),
               Text(
-                "Poor",
+                "${airQualityIndex[airPollution!.qualityLevel]}",
                 style: TextStyle(
-                  color: colors["poor-quality"],
+                  color: getColorAirQuality(airPollution!.qualityLevel),
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
                 ),
@@ -46,7 +67,7 @@ class AirQualityNow extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.end,
               children: [
                 Text(
-                  "Río de Janeiro, BR",
+                  "${widget.city.name}, ${widget.city.countryCode}",
                   textAlign: TextAlign.right,
                   style: TextStyle(
                     color: colors["pink-letter"],
@@ -55,7 +76,7 @@ class AirQualityNow extends StatelessWidget {
                   ),
                 ),
                 Text(
-                  "Saturday, 11 Nov",
+                  "Today, ${currentWeather!.date.day}/${currentWeather!.date.month}/${currentWeather!.date.year}",
                   style: TextStyle(
                     color: colors["pink-letter"],
                     fontSize: 14,
