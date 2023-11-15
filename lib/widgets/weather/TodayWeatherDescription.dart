@@ -36,10 +36,10 @@ class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
               Container(
-                height: 100,
-                width: 100,
-                decoration: BoxDecoration(
-                  color: colors["purple-button"],
+                height: 90,
+                width: 90,
+                child: Image.asset(
+                  "assets/images/weather_icons/${currentWeather!.iconId}.png",
                 ),
               ),
               Text(
