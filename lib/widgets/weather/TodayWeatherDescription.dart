@@ -4,10 +4,10 @@ import 'package:previsao_do_tempo/models/weather.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 
 class TodayWeatherDescription extends StatefulWidget {
-  City city;
-  Weather currentWeather;
+  final City city;
+  final Weather currentWeather;
 
-  TodayWeatherDescription({
+  const TodayWeatherDescription({
     Key? key,
     required this.city,
     required this.currentWeather,
@@ -92,29 +92,3 @@ class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
     );
   }
 }
-
-// FutureBuilder(
-//             future: CityApiService().getCity(widget.cityName),
-//             builder: (context, snapshot) {
-//               switch (snapshot.connectionState) {
-//                 case ConnectionState.none:
-//                   return const Text("None");
-//                 case ConnectionState.waiting:
-//                   return const Text("Waiting");
-//                 case ConnectionState.active:
-//                   return const Text("Active");
-//                 case ConnectionState.done:
-//                   if (snapshot.hasData) {
-//                     final City city = snapshot.data as City;
-//                     final Weather weather = city.currentWeather!;
-
-//                     return nose(
-//                       city: city,
-//                       weather: weather,
-//                     );
-//                   } else {
-//                     return const Text("Done");
-//                   }
-//               }
-//             },
-//           ),
