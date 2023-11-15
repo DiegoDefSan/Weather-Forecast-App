@@ -1,11 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/air_pollution.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
+import 'package:previsao_do_tempo/utils/quality_level_by_gas.dart';
 import 'package:previsao_do_tempo/widgets/air_quality/PollutionGasDetails.dart';
 
-class PollutionGases extends StatelessWidget {
+class PollutionGases extends StatefulWidget {
+  final AirPollution airPollution;
+
   const PollutionGases({
-    super.key,
-  });
+    Key? key,
+    required this.airPollution,
+  }) : super(key: key);
+
+  @override
+  State<PollutionGases> createState() => _PollutionGasesState();
+}
+
+class _PollutionGasesState extends State<PollutionGases> {
+  List<PollutionGasDetails> getRows() {
+    List<PollutionGasDetails> rows = [];
+
+    widget.airPollution.gases.forEach((key, value) {
+      rows.add(
+        PollutionGasDetails(
+          gasName: key,
+          airQualityLevel: QualityLevelByGas.getQualityLevelByGas(key, value),
+          gasConcentration: value,
+        ),
+      );
+    });
+
+    return rows;
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,46 +66,7 @@ class PollutionGases extends StatelessWidget {
               ),
             ],
           ),
-          const PollutionGasDetails(
-            gasName: "SO2",
-            airQualityLevel: 1,
-            gasConcentration: 0.64,
-          ),
-          const PollutionGasDetails(
-            gasName: "NO2",
-            airQualityLevel: 2,
-            gasConcentration: 0.77,
-          ),
-          const PollutionGasDetails(
-            gasName: "PM10",
-            airQualityLevel: 5,
-            gasConcentration: 0.54,
-          ),
-          const PollutionGasDetails(
-            gasName: "PM2.5",
-            airQualityLevel: 3,
-            gasConcentration: 0.50,
-          ),
-          const PollutionGasDetails(
-            gasName: "O3",
-            airQualityLevel: 4,
-            gasConcentration: 68.66,
-          ),
-          const PollutionGasDetails(
-            gasName: "CO",
-            airQualityLevel: 3,
-            gasConcentration: 201.94,
-          ),
-          const PollutionGasDetails(
-            gasName: "NH3",
-            airQualityLevel: 1,
-            gasConcentration: 201.94,
-          ),
-          const PollutionGasDetails(
-            gasName: "CO2",
-            airQualityLevel: 3,
-            gasConcentration: 0.12,
-          ),
+          ...getRows(),
         ],
       ),
     );
