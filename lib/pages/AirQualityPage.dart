@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/city.dart';
 import 'package:previsao_do_tempo/widgets/Navbar.dart';
 
 import '../components/AirQuality.dart';
@@ -8,9 +9,11 @@ class AirQualityPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Scaffold(
-      appBar: Navbar(title: "Air Quality"),
-      body: AirQuality(),
+    final City city = ModalRoute.of(context)!.settings.arguments as City;
+
+    return Scaffold(
+      appBar: const Navbar(title: "Air Quality"),
+      body: AirQuality(city: city),
     );
   }
 }
