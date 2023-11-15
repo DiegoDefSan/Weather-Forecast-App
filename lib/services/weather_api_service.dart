@@ -17,12 +17,10 @@ class WeatherApiService {
 
       final Map<String, dynamic> weatherData = jsonResponse["list"][0];
 
-      print(weatherData["main"]["temp"]);
-
       Weather weather = Weather(
         date: DateTime.fromMillisecondsSinceEpoch(weatherData["dt"] * 1000),
         currentTemp: kelvinToCelsius(weatherData["main"]["temp"]),
-        precipitationProbability: (weatherData["pop"] * 100).toDouble(),
+        precipitationProbability: (weatherData["pop"] * 100).toInt(),
         humidity: weatherData["main"]["humidity"],
         windSpeed: (weatherData["wind"]["speed"]).toDouble(),
         description: weatherData["weather"][0]["main"],

@@ -3,7 +3,7 @@ import 'package:previsao_do_tempo/models/city.dart';
 class Weather {
   final DateTime date;
   final int currentTemp;
-  final double precipitationProbability;
+  final int precipitationProbability;
   final int humidity;
   final double windSpeed;
   final String description;
