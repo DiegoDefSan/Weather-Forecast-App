@@ -1,9 +1,11 @@
 import 'dart:convert';
 import 'package:http/http.dart' as http;
+import 'package:previsao_do_tempo/models/air_pollution.dart';
 
 import 'package:previsao_do_tempo/models/city.dart';
 import 'package:previsao_do_tempo/models/weather.dart';
 import 'package:previsao_do_tempo/models/weather_dto.dart';
+import 'package:previsao_do_tempo/services/airPollution_api_service.dart';
 import 'package:previsao_do_tempo/services/weatherDTO_api_service.dart';
 import 'package:previsao_do_tempo/services/weather_api_service.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
@@ -39,8 +41,12 @@ class CityApiService {
       city.longitude,
     );
 
+    AirPollution airPollution = await AirPollutionApiService()
+        .getAirPollution(city.latitude, city.longitude);
+
     city.currentWeather = currentWeather;
     city.weatherByDay = weatherByDay;
+    city.airPollution = airPollution;
 
     return city;
   }
