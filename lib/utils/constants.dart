@@ -9,9 +9,9 @@ const Map<String, Color> colors = {
   "pink-container": Color(0xFFFCF1F1),
   "pink-letter": Color(0xFFEC6276),
   "blue-container": Color(0xFFA2A6D1),
-  "very-poor-quality": Color(0xFFFFDF53),
+  "very-poor-quality": Color(0xFFFF8C5A),
   "poor-quality": Color(0xFFFFB234),
-  "moderate-quality": Color(0xFFFF8C5A),
+  "moderate-quality": Color(0xFFFFDF53),
   "fair-quality": Color(0xFFBADE50),
   "good-quality": Color(0xFF87A44A),
 };
