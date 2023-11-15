@@ -43,8 +43,11 @@ class _TodayWeatherState extends State<TodayWeather> {
             height: 50,
             child: ElevatedButton(
               onPressed: () {
-                //Navigator.of(context).pushNamed("/air-quality");
-                print(widget.city.name);
+                Navigator.pushNamed(
+                  context,
+                  "/air-quality",
+                  arguments: widget.city,
+                );
               },
               style: ElevatedButton.styleFrom(
                 backgroundColor: colors["purple-button"],
