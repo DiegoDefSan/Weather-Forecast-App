@@ -5,12 +5,10 @@ import 'package:previsao_do_tempo/utils/constants.dart';
 
 class TodayWeatherDescription extends StatefulWidget {
   final City city;
-  final Weather currentWeather;
 
   const TodayWeatherDescription({
     Key? key,
     required this.city,
-    required this.currentWeather,
   }) : super(key: key);
 
   @override
@@ -19,6 +17,14 @@ class TodayWeatherDescription extends StatefulWidget {
 }
 
 class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
+  Weather? currentWeather;
+
+  @override
+  void initState() {
+    super.initState();
+    currentWeather = widget.city.currentWeather;
+  }
+
   @override
   Widget build(BuildContext context) {
     return SizedBox(
@@ -67,7 +73,7 @@ class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
                     ),
                     Text(
                       //"Today, 12/07/2021",
-                      "Today, ${widget.currentWeather.date.day}/${widget.currentWeather.date.month}/${widget.currentWeather.date.year}",
+                      "Today, ${currentWeather!.date.day}/${currentWeather!.date.month}/${currentWeather!.date.year}",
                       style: TextStyle(
                         color: colors["pink-letter"],
                         fontSize: 14,
@@ -77,7 +83,7 @@ class _TodayWeatherDescriptionState extends State<TodayWeatherDescription> {
                   ],
                 ),
                 Text(
-                  "${widget.currentWeather.currentTemp} °C",
+                  "${currentWeather!.currentTemp} °C",
                   style: TextStyle(
                     color: colors["pink-letter"],
                     fontSize: 40,

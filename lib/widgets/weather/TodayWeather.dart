@@ -32,7 +32,6 @@ class _TodayWeatherState extends State<TodayWeather> {
         children: [
           TodayWeatherDescription(
             city: widget.city,
-            currentWeather: widget.city.currentWeather!,
           ),
           TodayWeatherDetails(
             currentWeather: widget.city.currentWeather!,
