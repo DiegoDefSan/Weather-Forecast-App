@@ -25,6 +25,7 @@ class _DaysWeatherState extends State<DaysWeather> {
           day: getWeekDay(value.date),
           minTemperature: value.minTemperature,
           maxTemperature: value.maxTemperature,
+          iconId: value.iconId,
         ),
       );
     });
@@ -53,12 +54,14 @@ class RowWeather extends StatefulWidget {
   final String day;
   final int minTemperature;
   final int maxTemperature;
+  final String iconId;
 
   const RowWeather({
     Key? key,
     required this.day,
     required this.minTemperature,
     required this.maxTemperature,
+    required this.iconId,
   }) : super(key: key);
 
   @override
@@ -79,8 +82,8 @@ class _RowWeatherState extends State<RowWeather> {
                 width: 32,
                 height: 32,
                 margin: const EdgeInsets.only(right: 8),
-                decoration: BoxDecoration(
-                  color: colors["pink-letter"],
+                child: Image.asset(
+                  "assets/images/weather_icons/${widget.iconId}.png",
                 ),
               ),
               Text(
