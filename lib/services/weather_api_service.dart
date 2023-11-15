@@ -24,6 +24,7 @@ class WeatherApiService {
         humidity: weatherData["main"]["humidity"],
         windSpeed: (weatherData["wind"]["speed"]).toDouble(),
         description: weatherData["weather"][0]["main"],
+        iconId: weatherData["weather"][0]["icon"],
       );
 
       return weather;
