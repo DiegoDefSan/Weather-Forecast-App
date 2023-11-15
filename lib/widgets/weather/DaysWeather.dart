@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:previsao_do_tempo/models/weather_dto.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
-import 'package:previsao_do_tempo/utils/converse_tempeture.dart';
+import 'package:previsao_do_tempo/utils/converse_functions.dart';
 
 class DaysWeather extends StatefulWidget {
   final Map<String, WeatherDTO> weatherByDay;
