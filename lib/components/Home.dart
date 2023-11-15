@@ -27,7 +27,9 @@ class _HomeState extends State<Home> {
           case ConnectionState.none:
             return const Text("None");
           case ConnectionState.waiting:
-            return const Text("Waiting");
+            return const Center(
+              child: CircularProgressIndicator(),
+            );
           case ConnectionState.active:
             return const Text("Active");
           case ConnectionState.done:
