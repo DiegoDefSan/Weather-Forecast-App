@@ -23,12 +23,15 @@ class _TodayWeatherDetailsState extends State<TodayWeatherDetails> {
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
           WeatherDetail(
+            iconId: "precipitation",
             value: "${widget.currentWeather.precipitationProbability}%",
           ),
           WeatherDetail(
+            iconId: "humidity",
             value: "${widget.currentWeather.humidity}%",
           ),
           WeatherDetail(
+            iconId: "wind",
             value: "${widget.currentWeather.windSpeed} km/h",
           ),
         ],
@@ -39,10 +42,12 @@ class _TodayWeatherDetailsState extends State<TodayWeatherDetails> {
 
 class WeatherDetail extends StatefulWidget {
   final String value;
+  final String iconId;
 
   const WeatherDetail({
     Key? key,
     required this.value,
+    required this.iconId,
   }) : super(key: key);
 
   @override
@@ -57,8 +62,8 @@ class _WeatherDetailState extends State<WeatherDetail> {
         Container(
           width: 24,
           height: 24,
-          decoration: BoxDecoration(
-            color: colors["pink-letter"],
+          child: Image.asset(
+            "assets/images/weather_icons/${widget.iconId}.png",
           ),
         ),
         Container(
