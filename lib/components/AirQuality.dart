@@ -1,13 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:previsao_do_tempo/models/city.dart';
 import 'package:previsao_do_tempo/utils/constants.dart';
 import 'package:previsao_do_tempo/widgets/air_quality/AirQualityNow.dart';
 import 'package:previsao_do_tempo/widgets/air_quality/PollutionGases.dart';
 
-class AirQuality extends StatelessWidget {
-  const AirQuality({
-    super.key,
-  });
+class AirQuality extends StatefulWidget {
+  final City city;
 
+  const AirQuality({
+    Key? key,
+    required this.city,
+  }) : super(key: key);
+
+  @override
+  State<AirQuality> createState() => _AirQualityState();
+}
+
+class _AirQualityState extends State<AirQuality> {
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,11 +24,15 @@ class AirQuality extends StatelessWidget {
       decoration: BoxDecoration(
         color: colors["pink-background"],
       ),
-      child: const Column(
+      child: Column(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          AirQualityNow(),
-          PollutionGases(),
+          AirQualityNow(
+            city: widget.city,
+          ),
+          PollutionGases(
+            airPollution: widget.city.airPollution!,
+          ),
         ],
       ),
     );
