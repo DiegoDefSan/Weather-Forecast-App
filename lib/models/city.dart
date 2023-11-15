@@ -1,3 +1,4 @@
+import 'package:previsao_do_tempo/models/air_pollution.dart';
 import 'package:previsao_do_tempo/models/weather.dart';
 import 'package:previsao_do_tempo/models/weather_dto.dart';
 
@@ -8,6 +9,7 @@ class City {
   final String countryCode;
   Weather? currentWeather;
   Map<String, WeatherDTO>? weatherByDay;
+  AirPollution? airPollution;
 
   City({
     required this.name,
@@ -16,5 +18,6 @@ class City {
     required this.countryCode,
     this.currentWeather,
     this.weatherByDay,
+    this.airPollution,
   });
 }
