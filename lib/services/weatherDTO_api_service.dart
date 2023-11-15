@@ -28,7 +28,11 @@ class WeatherDTOApiService {
       }
 
       Map<String, WeatherDTO> weatherMap = {};
+
       int hours = 0;
+      DateTime now = DateTime.now();
+      String formattedDate =
+          "${now.year}-${now.month.toString().padLeft(2, '0')}-${now.day.toString().padLeft(2, '0')}";
 
       for (var item in weatherList) {
         if (weatherMap.containsKey(item.date)) {
@@ -46,8 +50,10 @@ class WeatherDTOApiService {
             weatherMap[item.date]!.description = item.description;
           }
         } else {
-          weatherMap[item.date] = item;
-          hours = 0;
+          if (item.date != formattedDate) {
+            weatherMap[item.date] = item;
+            hours = 0;
+          }
         }
       }
 
