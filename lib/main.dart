@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:previsao_do_tempo/routes/RouteGenerator.dart';
+import 'package:previsao_do_tempo/pages/AirQualityPage.dart';
+import 'package:previsao_do_tempo/pages/HomePage.dart';
 
 void main() {
   runApp(const MyApp());
@@ -10,11 +11,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
       title: 'Previsão do Tempo',
       debugShowCheckedModeBanner: false,
       initialRoute: "/",
-      onGenerateRoute: RouteGenerator.generateRoute,
+      routes: {
+        "/": (context) => const HomePage(),
+        "/air-quality": (context) => const AirQualityPage(),
+      },
     );
   }
 }
