@@ -17,11 +17,11 @@ class CityApiService {
     final responseCity = await http
         .get(Uri.parse("${baseUrl}direct?q=$cityName&limit=1&appid=$apiKey"));
 
-    if (responseCity.statusCode != 200) {
-      throw Exception("Failed to load city");
-    }
-
     final jsonResponse = jsonDecode(responseCity.body);
+
+    if (jsonResponse.length == 0) {
+      throw Exception("City not found");
+    }
 
     final Map<String, dynamic> cityData = jsonResponse[0];
 
