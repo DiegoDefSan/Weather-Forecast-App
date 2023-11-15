@@ -7,6 +7,7 @@ class Weather {
   final int humidity;
   final double windSpeed;
   final String description;
+  final String iconId;
   final City? city;
 
   Weather({
@@ -16,6 +17,7 @@ class Weather {
     required this.humidity,
     required this.windSpeed,
     required this.description,
+    required this.iconId,
     this.city,
   });
 }
