@@ -50,7 +50,7 @@ class WeatherDTOApiService {
             weatherMap[item.date]!.iconId = item.iconId;
           }
         } else {
-          if (item.date != formattedDate) {
+          if (item.date != formattedDate && weatherMap.length < 5) {
             weatherMap[item.date] = item;
             hours = 0;
           }
