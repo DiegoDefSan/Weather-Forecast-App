@@ -2,6 +2,10 @@ int kelvinToCelsius(double kelvin) {
   return (kelvin - 273.15).round();
 }
 
+double kelvinToCelsiusDouble(double kelvin) {
+  return double.parse((kelvin - 273.15).toStringAsFixed(2));
+}
+
 // Function that have a string datetime and return only date
 String convertDateTime(String dateString) {
   DateTime dateTime = DateTime.parse(dateString);
