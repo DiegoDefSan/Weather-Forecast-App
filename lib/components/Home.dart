@@ -56,6 +56,7 @@ class _HomeState extends State<Home> {
                     ),
                     DaysWeather(
                       weatherByDay: snapshot.data!.weatherByDay!,
+                      weatherByTime: snapshot.data!.weatherByTime!,
                     ),
                   ],
                 ),
